@@ -87,10 +87,8 @@ public class SwiftRecordPlugin: NSObject, FlutterPlugin, AVAudioRecorderDelegate
       AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
     ] as [String : Any]
 
-    let options: AVAudioSession.CategoryOptions = [.defaultToSpeaker, .allowBluetooth]
-
     do {
-      try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: options)
+      try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
       try AVAudioSession.sharedInstance().setActive(true)
 
       let url = URL(string: path) ?? URL(fileURLWithPath: path)
